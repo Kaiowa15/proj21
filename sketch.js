@@ -30,8 +30,10 @@ function setup() {
 	key.mouseClicked (hForce,vForce)
 
 	var ball_options = {
-		restitution: 0.95
-		
+		isStatic: false,
+		restitution: 0.3,
+		friction: 0,
+        density: 1.2
 	}
 
     var ground_options ={
@@ -46,10 +48,10 @@ function setup() {
 		ground = Bodies.rectangle(400,700,800,40,ground_options);
 		World.add(world,ground);
 
-        wall1 = Bodies.rectangle(750,665,5,35,ground_options);
+        wall1 = Bodies.rectangle(620,665,5,45,ground_options);
        	World.add(world,wall1);
  
-		wall2 = Bodies.rectangle(780,665,5,35,ground_options);
+		wall2 = Bodies.rectangle(690,665,5,45,ground_options);
         World.add(world,wall2);
 
 
@@ -84,19 +86,19 @@ function draw() {
 
   ellipse(ball.position.x,ball.position.y,20)
   rect(ground.position.x,ground.position.y,800,40);
-  rect(wall1.position.x,wall1.position.y,5,35);
-  rect(wall2.position.x,wall2.position.y,5,35);
+  rect(wall1.position.x,wall1.position.y,5,45);
+  rect(wall2.position.x,wall2.position.y,5,45);
   drawSprites();
 }
 
 function hForce (){
-	Matter.Body.applyForce(ball,{x:0,y:0},{x:0.05,y:0});
+	Matter.Body.applyForce(ball,{x:0,y:0},{x:41,y:0});
    
    }
    
    
    function vForce (){
-	Matter.Body.applyForce(ball,{x:0,y:0},{x:0,y:-0.05});
+	Matter.Body.applyForce(ball,{x:0,y:0},{x:0,y:-41});
    
    }
 
